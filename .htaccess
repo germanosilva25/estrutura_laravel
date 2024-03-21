@@ -1,0 +1,42 @@
+<ifmodule mod_rewrite.c>
+    <ifmodule mod_negotiation.c>
+        Options -MultiViews
+    </ifmodule>
+
+    RewriteEngine On
+
+    # Removendo WWW e forçando HTTPS
+    RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+    RewriteRule ^(.*)$ https://%1%{REQUEST_URI} [R=301,QSA,NC,L]
+
+    # Forçando HTTPS
+    RewriteCond %{HTTPS} off
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+    # -- Laravel
+    RewriteCond %{REQUEST_FILENAME} -d [OR]
+    RewriteCond %{REQUEST_FILENAME} -f
+    RewriteRule ^ ^$1 [N]
+
+    RewriteCond %{REQUEST_URI} (\.\w+$) [NC]
+    RewriteRule ^(.*)$ public/$1
+
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php
+    # ------------
+</ifmodule>
+
+# <IfModule mod_security.c>
+#   <If "%{REQUEST_URI} =~ https://clinica.agathonpsicologia.com.br/getSignedDocument">
+#     SecFilterEngine Off
+#     SecFilterScanPOST Off
+#   </If>
+# </IfModule>
+<IfModule mod_security.c>
+  SecRuleEngine Off
+  SecFilterInheritance Off
+  SecFilterEngine Off
+  SecFilterScanPOST Off
+  SecRuleRemoveById 300015 3000016 3000017
+</IfModule>

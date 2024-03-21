@@ -1,0 +1,109 @@
+.container {
+    position: relative;
+}
+
+.container-spinner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    text-align: center;
+    background: whitesmoke;
+    border-radius: 4px;
+    z-index: 1021;
+}
+
+.container-spinner:before {
+    content: "";
+    height: 100%;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.container-spinner .spinner-frame {
+    display: inline-block;
+    vertical-align: middle;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    border: 5px solid #fff;
+    padding: 10px;
+}
+
+.container-spinner > span {
+    top: calc(-50% + 50px);
+    position: relative;
+}
+
+.container-spinner > span,
+.container-spinner .spinner-frame .spinner-cover {
+    color: #0f5d8a;
+    font-size: 22px;
+}
+
+.container-spinner .spinner-frame .spinner-cover {
+    background: #fff;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    position: relative;
+    z-index: 2;
+}
+
+.container-spinner .spinner-frame .spinner-bar {
+    background: #29d;
+    width: 50%;
+    height: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 100% 0 0 0;
+    -webkit-animation: spinny 2s linear infinite;
+    animation: spinny 2s linear infinite;
+    -webkit-transform-origin: 100% 100%;
+    -ms-transform-origin: 100% 100%;
+    transform-origin: 100% 100%;
+}
+
+@keyframes spinny {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+        background: #29d;
+    }
+
+    50% {
+        -webkit-transform: rotate(180deg);
+        transform: rotate(180deg);
+        background: #00427c;
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+        background: #29d;
+    }
+}
+
+@-webkit-keyframes spinny {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+        background: #29d;
+    }
+
+    50% {
+        -webkit-transform: rotate(180deg);
+        transform: rotate(180deg);
+        background: #00427c;
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+        background: #29d;
+    }
+}
