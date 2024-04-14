@@ -21,8 +21,8 @@ return new class extends Migration
             'email' => 'germanosilva@yahoo.com.br',
             'password' => Hash::make('1!Qazxcvbn'), // Assuming you're using bcrypt for password hashing
             'id_grupo' => 1,
-            'matricula' => 3825,
-            'cargo' => 'Desenvolvedor',
+            // 'matricula' => 3825,
+            // 'cargo' => 'Desenvolvedor',
         ]);
     }
 

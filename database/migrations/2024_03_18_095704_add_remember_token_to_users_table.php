@@ -9,16 +9,15 @@ class AddRememberTokenToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->rememberToken();
-            $table->foreign('id_grupo')->references('id_grupo')->on('grupos')->onDelete('restrict');
-                
+           // $table->string('remember_token');
+   
         });
     }
 
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('remember_token');
+            //$table->dropColumn('remember_token');
         });
     }
 }

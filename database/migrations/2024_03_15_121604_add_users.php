@@ -20,10 +20,14 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->bigInteger('id_grupo')->constrained('grupos');;
-            $table->Integer('matricula');
-            $table->string('cargo', 128);
+            // $table->bigInteger('id_grupo')->constrained('grupos');
+            // $table->Integer('matricula');
+            // $table->string('cargo', 128);
             $table->timestamps();
+
+            $table->unsignedBigInteger('id_grupo');
+            $table->foreign('id_grupo')->constrained()->references('id_grupo')->on('grupos')->restrictOnDelete()->restrictOnUpdate();
+             
         });
     }
 

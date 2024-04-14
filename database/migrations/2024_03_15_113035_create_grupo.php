@@ -18,6 +18,11 @@ return new class extends Migration
             $table->string('nome_grupo');
             $table->timestamps();
         });
+
+        
+        DB::table('grupos')->insert([
+            'nome_grupo' => 'Admin',
+        ]);
     }
 
     /**
